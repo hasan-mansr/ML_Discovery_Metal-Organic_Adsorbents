@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\title{One-Class SVM for PFAS--MOF Descriptor Modeling}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Problem framing}
+
+\begin{itemize}
+\item \textbf{Goal:} Learn the \emph{region} of descriptor space occupied by known PFAS-adsorbing MOFs using positive-only data.
+\item \textbf{Why OC-SVM:} No reliable negatives or scalar target are available; instead, a soft boundary around positive examples is required.
+\end{itemize}
+
+\section{Descriptor set}
+
+\subsection*{Core (chemist-prioritized)}
+\begin{itemize}
+\item PLD (\AA)
+\item LCD (\AA)
+\item Geometric Surface Area (m$^2$/g)
+\item Void fraction
+\item Pore volume (cm$^3$/g)
+\end{itemize}
+
+\subsection*{Candidate / exploratory}
+\begin{itemize}
+\item Density (g/cm$^3$)
+\end{itemize}
+
+\noindent\textbf{Dimensionality:} A feature space of 5--6 descriptors is appropriate for OC-SVM given sample sizes of 23 (PFOA) and 13 (PFOS).
+
+\section{Modeling choices}
+
+\subsection{What the OC-SVM is optimizing (intuition)}
+
+\begin{itemize}
+\item The one-class SVM learns a \emph{compact region} of descriptor space that contains most of the positive data.
+\item Unlike binary SVMs, there is no opposing class pushing the boundary from the outside.
+\item The solution is determined by a trade-off between:
+\begin{itemize}
+\item minimizing the volume (or norm) of the enclosing region, and
+\item allowing a controlled fraction of points to lie outside the boundary.
+\end{itemize}
+\item This trade-off is governed primarily by the parameter $\nu$, which prevents the trivial solution of an infinitely large enclosing region.
+\item A single multivariate OC-SVM is standard; using more than two features is routine (two-dimensional examples are used only for visualization).
+\end{itemize}
+
+\subsection{Kernel choice (justification)}
+
+The \textbf{Radial Basis Function (RBF)} kernel is preferred for one-class problems in materials descriptor spaces.
+
+\paragraph{Geometric rationale.}
+\begin{itemize}
+\item The OC-SVM objective is to \emph{enclose} the region occupied by positive examples.
+\item RBF kernels induce closed, flexible boundaries in feature space that can wrap around clusters of points.
+\item This matches the scientific goal of learning a compact support of PFAS-compatible MOFs.
+\end{itemize}
+
+\noindent\textbf{Kernel:} RBF.
+\begin{itemize}
+\item $\nu$: controls the allowed fraction of outliers and acts as a regularization parameter preventing unbounded expansion of the region.
+\item $\gamma$: sets the characteristic length scale of the boundary and is chosen via simple heuristics (e.g., median pairwise distance).
+\end{itemize}
+
+\section{Critical preprocessing}
+
+\begin{itemize}
+\item \textbf{Scaling is mandatory.} Z-score or robust scaling must be applied.
+\item The RBF kernel relies on Euclidean distances; unscaled features (e.g., surface area) would dominate the geometry.
+\item Correlated descriptors (e.g., PLD, LCD, pore volume) are acceptable, as the OC-SVM operates on the induced distance geometry rather than assuming feature independence.
+\item PCA is used strictly for visualization and interpretation and is not required for model training.
+\end{itemize}
+
+\section{Assessing descriptor influence and sensitivity}
+
+There is no native coefficient-based notion of feature importance. Instead, descriptor relevance is assessed using \textbf{sensitivity analyses}.
+
+\subsection{Leave-One-Feature-Out (LOFO)}
+\begin{itemize}
+\item Retrain the model after removing each descriptor in turn.
+\item Compare the fraction of points flagged as outliers, changes in anomaly score distributions, and boundary stability.
+\end{itemize}
+
+\subsection{Perturbation sensitivity}
+\begin{itemize}
+\item Perturb a single descriptor (e.g., $\pm 5$--$10\%$) while holding others fixed.
+\item Observe changes in anomaly scores; this is often interpretable for domain experts.
+\end{itemize}
+
+\section{What not to do}
+
+\begin{itemize}
+\item Do not report p-values or regression-style coefficients.
+\item Do not assume monotonic or linear effects.
+\item Do not over-tune hyperparameters to force perceived importance.
+\end{itemize}
+
+\section{Visualizing the learned region}
+
+\noindent\emph{Note:} Different choices of slice (e.g., PCA planes versus original feature-pair slices, or different fixed reference values) may lead to different apparent boundaries. Such variation reflects the high-dimensional nature of the learned region rather than model instability.
+
+\begin{itemize}
+\item Any two-dimensional decision boundary plot represents a \textbf{conditional slice} of the learned high-dimensional region.
+\item PCA-based plots show the intersection of the decision function with the PCA subspace.
+\item Original-feature plots vary two selected descriptors while fixing all remaining features at their mean values.
+\item These visualizations are illustrative and should not be interpreted as complete projections of the full decision boundary.
+\end{itemize}
+
+\section{Recommended workflow}
+
+\begin{enumerate}
+\item Train an RBF OC-SVM on the scaled core descriptors.
+\item Validate stability with respect to $\nu$.
+\item Add density and compare resulting boundaries and scores.
+\item Perform LOFO and perturbation analyses.
+\item Report boundary stability, sensitivity, and interpretable contour-based visualizations (PCA or feature-pair slices), not coefficients.
+\end{enumerate}
+
+\section{Outputs to report}
+
+\begin{itemize}
+\item Continuous anomaly scores.
+\item In/out decisions at the chosen threshold.
+\item Sensitivity results supporting descriptor relevance.
+\item Visualization figures.
+\end{itemize}
+
+\end{document}
