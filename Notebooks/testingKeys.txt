@@ -1,0 +1,5 @@
+coremof
+coremof_FSR
+coremof_Ion
+coremof_NCR
+coremof_occupancy
