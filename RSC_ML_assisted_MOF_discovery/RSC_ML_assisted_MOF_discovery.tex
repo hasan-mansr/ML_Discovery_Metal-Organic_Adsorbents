@@ -30,6 +30,9 @@
 \usepackage{setspace}
 \usepackage[compact]{titlesec}
 \usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{makecell}
+\definecolor{Pink}{RGB}{255, 0, 255}
 %%%Please don't disable any packages in the preamble, as this may cause the template to display incorrectly.%%%
 
 
@@ -190,6 +193,47 @@ Rather than replacing simulation or experiment, this approach uses machine learn
 
 \section{Literature Review / Data}
 
+\begin{table*}[h]
+	\begin{tabular}{lllccccccc}
+		\hline
+		\multicolumn{1}{c}{\textbf{\#}} &
+		\multicolumn{1}{c}{\textbf{Name}} &
+		\multicolumn{1}{c}{\textbf{Metal node}} &
+		\textbf{\begin{tabular}[c]{@{}c@{}}Density \\ (g/cm\textasciicircum{}3)\end{tabular}} &
+		\textbf{PLD(Å)} &
+		\textbf{LCD (Å)} &
+		\textbf{\begin{tabular}[c]{@{}c@{}}GSA \\ (m\textasciicircum{}2/g)\end{tabular}} &
+		\textbf{\begin{tabular}[c]{@{}c@{}}Void \\ fraction\end{tabular}} &
+		\textbf{\begin{tabular}[c]{@{}c@{}}Pore volume \\ (cm\textasciicircum{}3/g)\end{tabular}} &
+		\textbf{\begin{tabular}[c]{@{}c@{}}Molecular weigth \\ of unit   cell(Å\textasciicircum{}2)\end{tabular}} \\ \hline
+		1  & UiO-66          & Zr(IV)  & 1.23 & 3.82  & 8.70  & 2,921 & 0.59 & 0.48 & 6,640   \\
+		2  & UiO-66-NH2      & Zr(IV)  & 2.02 & 1.28  & 7.33  & 2,383 & 0.42 & 0.21 & 10,960  \\
+		3  & UiO-66-F4       & Zr(IV)  & 1.64 & 1.08  & 2.72  & 4,812 & 0.28 & 0.17 & 1,381   \\
+		4  & UiO-67          & Zr(IV)  & 0.72 & 6.73  & 12.97 & 3,475 & 0.74 & 1.02 & 8,467   \\
+		5  & UiO-67-F2       & Zr(IV)  & 0.86 & 6.64  & 12.83 & 3,059 & 0.72 & 0.84 & 10,194  \\
+		6  & MOF-808         & Zr(IV)  & 1.28 & 10.09 & 15.64 & 2,178 & 0.63 & 0.49 & 33,373  \\
+		7  & PCN-999         & Zr(IV)  & 0.59 & 18.48 & 19.44 & 3,430 & 0.79 & 1.34 & 19,228  \\
+		8  & PCN-1002        & Zr(IV)  & 1.27 & 2.06  & 7.42  & 3,526 & 0.52 & 0.41 & 7,116   \\
+		9  & DUT-67          & Zr(IV)  & 1.03 & 6.63  & 14.51 & 2,708 & 0.70 & 0.68 & 36,239  \\
+		10 & NU-1000         & Zr(IV)  & 0.49 & 28.35 & 28.81 & 3,605 & 0.82 & 1.68 & 6,482   \\
+		11 & MIL-53(Al)-as   & Al(III) & 1.00 & 5.95  & 6.52  & 3,991 & 0.59 & 0.59 & 13,254  \\
+		12 & MIL-96(Al)      & Al(III) & 1.15 & 3.63  & 8.33  & 3,579 & 0.56 & 0.49 & 3,837   \\
+		13 & MIL-100(Al)     & Al(III) & 0.68 & 8.50  & 27.81 & 3,593 & 0.74 & 1.09 & 150,561 \\
+		14 & MIL-101(Cr)     & Cr(III) & 0.46 & 13.84 & 34.15 & 3,805 & 0.83 & 1.80 & 193,355 \\
+		15 & MIL-101(Cr)-NH2 & Cr(III) & 1.87 & 1.16  & 2.33  & 4,245 & 0.36 & 0.19 & 4,081   \\
+		16 & MIL-100 (Fe)    & Fe(III) & 0.76 & 8.85  & 27.76 & 3,271 & 0.74 & 0.97 & 180,331 \\
+		17 & MIL-101 (Fe)    & Fe(III) & 0.46 & 13.84 & 34.15 & 3,805 & 0.83 & 1.80 & 193,355 \\
+		18 & ZIF-7           & Zn(II)  & 1.44 & 3.13  & 4.35  & 3,930 & 0.44 & 0.31 & 2,076   \\
+		19 & ZIF-8           & Zn(II)  & 0.92 & 3.58  & 11.98 & 4,996 & 0.64 & 0.69 & 2,707   \\
+		20 & ZIF-L           & Zn(II)  & 1.50 & 1.07  & 2.36  & 5,397 & 0.35 & 0.23 & 7,344   \\
+		21 & HKUST-1         & Cu(II)  & 0.95 & 5.21  & 11.12 & 3,707 & 0.69 & 0.72 & 10,446  \\
+		22 & Mn-BTC          & Mn(II)  & 1.87 & 0.62  & 1.50  & 4,112 & 0.19 & 0.10 & 2,986   \\
+		23 & Ce-BTC          & Ce(III) & 1.28 & 6.40  & 6.62  & 3,273 & 0.57 & 0.44 & 1,184  
+	\end{tabular}
+	\caption{Initial PFOA active list}
+	\label{tab:Init-PFOA-active}
+\end{table*}
+
 \begin{itemize}
 	\item \textbf{Defining the chemical question and the discovery workflow}
 	\begin{enumerate}
@@ -206,17 +250,21 @@ Rather than replacing simulation or experiment, this approach uses machine learn
 		\item Descriptor sparsity, collinearity, and dimensionality constraints
 	\end{enumerate}
 \end{itemize}
+We start with 23 PFOA active MOFs known from literature  shown in Table~\ref{tab:Init-PFOA-active}. Each of these MOFs is know to be adsorption active for PFOA at various efficacy levels. However, because testing conditions across literature are unstandardised (such as MOF dosage, PFOA concentration, adsorption time, adsorption capacity, removal percentage etc.), we are unable to put a numerical score on each MOF's ability to remove PFOA. Consequently, we are only able to label these MOFs as `PFOA active'.
+
+We capture seven numerical features for each MOF: density, pore limiting diameter (PLD), largest cavity diameter (LCD), geometric surface area (GSA), void fraction, pore volume and molecular weight per unit cell, also shown in Table~\ref{tab:Init-PFOA-active}. Large enough PLD and LCD are expected to allow PFOA adsorption, without being so large so as to not hold tightly to the PFOA molecule. These features are meant to capture the necessary (but not sufficient) condition for adsorption. GSA, void fraction and pore volume are expected to capture the capacity potential of adsorption, on the other hand. We also information available regarding the metal active node of the MOF and its density and molecular weight per unit cell for potential use in machine learning modelling.
+
 
 \section{Methodology}\label{sec:method}
 
-Will be a description of the models and how they are chained together. Novelty limited to architecture and application as opposed to model building.
-Based on an ML--simulation workflow starting from existing literature:
+The ML--simulation based workflow starts from the 23 PFOA active MOFs in existing literature and is formed of three major steps:
 
 \begin{enumerate}
 	\item Baseline model (OCSVM) + binary simulation \textbf{1 iteration}
 	\item SVM + energy simulatio \textbf{1 iteration}
 	\item SVR + energy simulation \textbf{ iterations}
 \end{enumerate}
+We note novelty of architecture and application using existing machine learning modelling approaches.
 
 \begin{figure}[!h]
 	\centering
@@ -226,6 +274,7 @@ Based on an ML--simulation workflow starting from existing literature:
 \end{figure}
 
 \subsection{Baseline Single Class Labelling model (OCSVM)}\label{sec:method-1_OCSVM}
+
 \begin{itemize}
 	\item \textbf{Establishing the baseline predictive model}
 	\begin{enumerate}
@@ -235,11 +284,11 @@ Based on an ML--simulation workflow starting from existing literature:
 	\end{enumerate}
 \end{itemize}
 
-Using the results, we are able to simulate a choice of candidates to assess \textbf{predictive power}.
 
-The discovery of new PFAS-removing MOFs presents a challenge for conventional supervised learning approaches, as reliable negative examples are inherently difficult to define. While a subset of experimentally validated MOFs exhibiting strong PFAS adsorption performance can be identified from literature (\textcolor{red}{Put original table in supporting info}), the vast majority of available MOF structures lack corresponding adsorption measurements and cannot be confidently assigned as inactive. This creates a positive-unlabelled learning problem rather than a conventional binary classification task.
 
-To address this challenge, we employ a One-Class Support Vector Machine (OC-SVM) approach, which is specifically designed to learn the characteristic feature space occupied by a single class. Unlike traditional support vector machines, which construct a maximum-margin hyperplane separating positive and negative samples, OC-SVM identifies a boundary enclosing the region of feature space associated with known positive examples. Although commonly applied for anomaly detection, including fraud identification and cybersecurity applications, the same principle can be adapted for materials discovery by defining successful PFAS-removing MOFs as the target class. The resulting model learns the structural and chemical characteristics associated with effective PFAS adsorption and enables the screening of unexplored MOFs within the CoRE MOF database prior to computationally expensive molecular simulations. (\textcolor{red}{This is how the introduction finishes})
+The discovery of new PFAS-removing MOFs presents a challenge for conventional supervised learning approaches, as reliable negative examples are inherently difficult to define. While a subset of experimentally validated MOFs exhibiting strong PFAS adsorption performance can be identified from literature, the vast majority of available MOF structures lack corresponding adsorption measurements and cannot be confidently assigned as inactive. This creates a positive-unlabelled learning problem rather than a conventional binary classification task.
+
+To address this challenge, we employ a One-Class Support Vector Machine (OC-SVM) approach, which is specifically designed to learn the characteristic feature space occupied by a single class. Unlike traditional support vector machines, which construct a maximum-margin hyperplane separating positive and negative samples, OC-SVM identifies a boundary enclosing the region of feature space associated with known positive examples. Although commonly applied for anomaly detection, including fraud identification and cybersecurity applications, the same principle can be adapted for materials discovery by defining successful PFAS-removing MOFs as the target class. The resulting model learns the structural and chemical characteristics associated with effective PFAS adsorption and enables the screening of unexplored MOFs within the CoRE MOF database prior to computationally expensive molecular simulations.
 
 The descriptor vector of each experimentally reported PFAS-active MOF is represented as:
 \begin{equation}
@@ -280,13 +329,132 @@ While the details of solving the optimisation problem that determine the best se
 	\label{eq:ocsvm-primal}
 \end{equation}
 
-The minimisation across the two parameters \(w \text{ and } \rho\) fits the smallest boundary encompassing the data, however the introduction of an error term \(\epsilon\) allows fitting a tighter boundary, with the hyper-parameter \(\nu\) controlling the degree to which errors may be accepted. Figure~\ref{fig:OCSVM-train} show the OC-SVM results based on hyper-parameter value of \(\nu = 20\%\): (\textcolor{red}{figure caption needs to refer to the list of named labels}).
+The minimisation across the two parameters \(w \text{ and } \rho\) fits the smallest boundary encompassing the data, however the introduction of an error term \(\epsilon\) allows fitting a tighter boundary, with the hyper-parameter \(\nu\) controlling the degree to which errors may be accepted. Figure~\ref{fig:OCSVM-train} shows the OC-SVM results based on hyper-parameter value of $\nu = 15\%$ (values between 5\% to 20\% showed similar results). The 23 PFOA active MOFs together define a region in the feature space that is visualised using a 2-PCA plot.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{figures/OCSVM-Region-nu0.2.png}
-	\caption{OCSVM results based on starting data.}
+	\caption{OCSVM results classifying the original 23 MOFs$^*$.}
 	\label{fig:OCSVM-train}
 \end{figure}
+\footnotetext{\textit{$^{*}$~Reference Table~\ref{tab:Init-PFOA-active}}}
+
+
+Once we have trained the OCSVM model, we are able to pass the features of any MOF and obtain a centrality score for the MOF. A high positive score indicates MOFs central to the region defined by the model, negative scores mean MOFs outside the region while a score of zero defines MOFs that lie on the frontier of the region.
+
+Our next step becomes the validation of the OCSVM model via simulations, if the model is well defined highly positive scored MOFs will  return positive simulation while negatively scored ones will return negative simulation results. However, a point to note here is while simulations represent lower effort than physical experimentation, they none the less are time consuming.
+
+Table~\ref{tab:OCSVM-result} represent a choice of the six highest scored MOFs from the coremofs database along with the three worst and two borderline MOFs, the six highest scored ones are predicted to be PFOA `Active', the three worst scored MOFs are predicted to be InActive while the borderline ones are assigned the `frontier' label. The last column represents the results of carrying out simulations on these MOFs. As can be seen `Active' predictions were all incorrect, mainly due PLD limitations, while the `Frontier' ones came back PFOA active. The model was able to correctly predict the simulation outcome for the `InActive' MOFs.
+
+
+% \usepackage{booktabs} and \usepackage{makecell} needed
+\begin{table*}[t]
+	\centering
+	\begin{tabular}{@{}lllllllllllll@{}}
+		\toprule
+		\textbf{Name} &
+		\makecell{\textbf{OCSVM}\\\textbf{($\nu=0.15$)}} &
+		\textbf{Density} &
+		\textbf{PLD} &
+		\textbf{LCD} &
+		\textbf{GSA} &
+		\makecell{\textbf{Void}\\\textbf{Fraction}} &
+		\makecell{\textbf{Pore}\\\textbf{Volume}} &
+		\makecell{\textbf{Molecular}\\\textbf{Weight}\\\textbf{(g/mol)}} &
+		\makecell{\textbf{Stage 1}\\\textbf{OCSVM}\\\textbf{Prediction}} &
+		\makecell{\textbf{Stage 1}\\\textbf{Simulation}\\\textbf{Result}} \\
+		\midrule
+		2008{[}Co{]}{[}sql{]}2{[}ASR{]}1  & 0.15         & 1.52 & 2.43  & 4.78  & 4,256 & 0.40 & 0.26 & 2,113 & Active   & NotGood  \\
+		2018{[}Co{]}{[}flu{]}3{[}ASR{]}1  & 0.15         & 1.35 & 2.80  & 4.45  & 4,348 & 0.43 & 0.32 & 917   & Active   & NotGood  \\
+		2022{[}Co{]}{[}gra{]}3{[}ASR{]}1  & 0.15         & 1.30 & 2.18  & 5.07  & 4,527 & 0.45 & 0.34 & 3,940 & Active   & NotGood  \\
+		2015{[}Pr{]}{[}hcb{]}2{[}ASR{]}1  & 0.15         & 1.51 & 2.33  & 4.48  & 4,281 & 0.41 & 0.27 & 3,480 & Active   & NotGood  \\
+		2023{[}Zn{]}{[}nan{]}3{[}ASR{]}13 & 0.15         & 1.51 & 2.31  & 4.47  & 4,462 & 0.41 & 0.27 & 2,909 & Active   & NotGood  \\
+		2024{[}Cu{]}{[}pcu{]}3{[}ASR{]}2  & 0.15         & 1.42 & 2.33  & 4.03  & 4,418 & 0.41 & 0.29 & 5,405 & Active   & NotGood  \\
+		2021{[}Eu{]}{[}fcu{]}3{[}ASR{]}2  & 0.00         & 0.79 & 7.21  & 14.75 & 3,040 & 0.76 & 0.96 & 2,505 & Frontier & Active   \\
+		2022{[}Ni{]}{[}kgd{]}2{[}ASR{]}1  & -       0.00 & 0.83 & 3.23  & 9.75  & 5,091 & 0.61 & 0.73 & 946   & Frontier & Active   \\
+		2015{[}Zr{]}{[}ftw{]}3{[}ASR{]}3  & -       0.65 & 0.29 & 10.50 & 25.26 & 4,625 & 0.87 & 3.00 & 4,241 & InActive & InActive \\
+		2016{[}Mg{]}{[}stp{]}3{[}ASR{]}2  & -       0.67 & 0.28 & 26.59 & 28.06 & 4,802 & 0.88 & 3.08 & 2,538 & InActive & InActive \\
+		2020{[}Fe{]}{[}hcb{]}2{[}ASR{]}2  & -       0.78 & 0.18 & 15.58 & 22.95 & 4,288 & 0.93 & 5.31 & 792   & InActive & InActive \\ \bottomrule
+	\end{tabular}
+	\caption{OCSVM prediction and simulation results for 11 selected COREMOFs}
+	\label{tab:OCSVM-result}
+\end{table*}
+
+While these results are mixed, they give the necessary information to further refine the machine learning approach.
+
+\subsection{Two-Class Classification Model (SVM)}\label{sec:method-2_SVM}
+
+We are able to append the 11 CoRE MOFs from Table~\ref{tab:OCSVM-result} to the original 23 PFOA-active MOFs to obtain a dataset of 34 MOFs, comprising 25 positive and 9 negative samples. The labels of the additional MOFs were assigned from the molecular simulation results, with a positive label corresponding to a PFOA-active MOF and a negative label corresponding to a PFOA-inactive and frontier MOFs. This additional simulation-derived information transforms the initial positive-only learning problem into a conventional two-class classification problem.
+
+A Support Vector Machine (SVM) was therefore employed to learn a decision boundary between the active and inactive MOFs. Given a set of labelled MOFs represented by descriptor vectors $\mathbf{x}_i$ and corresponding class labels $y_i \in \{-1,+1\}$, the separating hyperplane can be expressed as
+
+\begin{equation}
+	\mathbf{w}^{T}\phi(\mathbf{x}) + b = 0,
+	\label{eq:svm-hyperplane}
+\end{equation}
+
+where $\mathbf{w}$ defines the orientation of the hyperplane, $b$ is the intercept, and $\phi(\mathbf{x})$ maps the input descriptor vector into the feature space. The optimal hyperplane is obtained by maximising the margin between the two classes. For a linearly separable dataset, this can be formulated as the minimisation problem
+
+\begin{equation}
+	\begin{aligned}
+		\min_{\mathbf{w},\,b}\quad
+		& \frac{1}{2}\|\mathbf{w}\|^2 \\
+		\text{subject to}\quad
+		& y_i\left(\mathbf{w}^{T}\phi(\mathbf{x}_i)+b\right) \geq 1,
+		\qquad i=1,\ldots,n.
+	\end{aligned}
+	\label{eq:svm-hard}
+\end{equation}
+
+In practice, perfect separation of the active and inactive MOFs is not expected, particularly given the limited number of simulation-labelled samples. Slack variables $\xi_i$ were therefore introduced to permit individual observations to violate the margin, giving the soft-margin formulation
+
+\begin{equation}
+	\begin{aligned}
+		\min_{\mathbf{w},\,b,\,\boldsymbol{\xi}}\quad
+		& \frac{1}{2}\|\mathbf{w}\|^2
+		+ C\sum_{i=1}^{n}\xi_i \\
+		\text{subject to}\quad
+		& y_i\left(\mathbf{w}^{T}\phi(\mathbf{x}_i)+b\right)
+		\geq 1-\xi_i, \\
+		& \xi_i \geq 0,
+		\qquad i=1,\ldots,n,
+	\end{aligned}
+	\label{eq:svm-soft}
+\end{equation}
+
+where $C$ controls the trade-off between maximising the classification margin and penalising misclassified or margin-violating observations. A large value of $C$ places greater emphasis on correctly classifying the training data, whereas a smaller value permits greater tolerance of classification errors in favour of a wider margin.
+
+For nonlinear separation of the MOF descriptor space, the mapping $\phi(\mathbf{x})$ can be avoided explicitly through the use of a kernel function,
+
+\begin{equation}
+	K(\mathbf{x}_i,\mathbf{x}_j)
+	=
+	\phi(\mathbf{x}_i)^{T}\phi(\mathbf{x}_j).
+	\label{eq:svm-kernel}
+\end{equation}
+
+The resulting classification function can then be written in its kernelised form as
+
+\begin{equation}
+	f(\mathbf{x})
+	=
+	\sum_{i=1}^{n}\alpha_i y_i
+	K(\mathbf{x}_i,\mathbf{x}) + b,
+	\label{eq:svm-decision}
+\end{equation}
+
+where $\alpha_i$ are the coefficients obtained during optimisation and the observations with non-zero $\alpha_i$ constitute the support vectors. The predicted class is determined from the sign of the decision function,
+
+\begin{equation}
+	\hat{y} =
+	\operatorname{sign}\left[f(\mathbf{x})\right].
+	\label{eq:svm-classification}
+\end{equation}
+
+The SVM was subsequently trained using the combined set of literature-derived and simulation-labelled MOFs and applied to the remaining MOFs within the CoRE database. In contrast to the OC-SVM, which identified MOFs according to their similarity to the descriptor space of known PFOA-active materials, the two-class SVM was able to explicitly distinguish between descriptor characteristics associated with simulated PFOA-active and PFOA-inactive MOFs. The resulting classification was then used to identify a reduced set of candidate MOFs for the next round of molecular simulations.
+
+\subsection{Support Vector Regression}
+The simulation results, including the bond energies, obtained from these newly selected candidates were subsequently incorporated into the training dataset, providing additional labelled examples for refinement of the classification model and enabling progression to the next stage of the machine learning pipeline.
+
 
 \section{Conclusions}
 The conclusions section should come in this section at the end of the article, before the Author contributions statement and/or Conflicts of interest statement.
