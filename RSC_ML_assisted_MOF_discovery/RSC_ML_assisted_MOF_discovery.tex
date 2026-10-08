@@ -32,7 +32,7 @@
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{makecell}
-\definecolor{Pink}{RGB}{255, 0, 85}
+\definecolor{Pink}{RGB}{178, 0, 0}
 %%%Please don't disable any packages in the preamble, as this may cause the template to display incorrectly.%%%
 
 
@@ -266,25 +266,14 @@ The ML--simulation based workflow starts from the 23 PFOA active MOFs in existin
 \end{enumerate}
 We note novelty of architecture and application using existing machine learning modelling approaches.
 
-\begin{figure}[!h]
+\begin{figure*}[!h]
 	\centering
-	\includegraphics[width=\linewidth]{figures/pipeline.png}
+	\includegraphics[width=\linewidth]{figures/Pipeline.png}
 	\caption{Overall workflow.}
 	\label{fig:ML-pipeline}
-\end{figure}
+\end{figure*}
 
 \subsection{Baseline Single Class Labelling model (OCSVM)}\label{sec:method-1_OCSVM}
-
-\begin{itemize}
-	\item \textbf{Establishing the baseline predictive model}
-	\begin{enumerate}
-		\item Initial model trained on labelled data
-		\item Positive-only or highly imbalanced learning rationale
-		\item First-pass ranking of database candidates
-	\end{enumerate}
-\end{itemize}
-
-
 
 The discovery of new PFAS-removing MOFs presents a challenge for conventional supervised learning approaches, as reliable negative examples are inherently difficult to define. While a subset of experimentally validated MOFs exhibiting strong PFAS adsorption performance can be identified from literature, the vast majority of available MOF structures lack corresponding adsorption measurements and cannot be confidently assigned as inactive. This creates a positive-unlabelled learning problem rather than a conventional binary classification task.
 
@@ -343,6 +332,8 @@ The minimisation across the two parameters \(w \text{ and } \rho\) fits the smal
 Once we have trained the OCSVM model, we are able to pass the features of any generic MOF and obtain a centrality score for the MOF. A high positive score indicates MOFs central to the region defined by the model, negative scores mean MOFs outside the region while a score of zero defines MOFs that lie on the boundary of the region and can be described as `indeterminate'. More extreme positive/ negative scores are commensurate of greater/ lesser `qualitative' nearness to the central region defined by the model.
 
 Our next step becomes the validation of the OCSVM model via simulations, if the model is well defined highly positive scored MOFs will  return positive simulation while negatively scored ones will return negative simulation results. However, a point to note here is while simulations represent lower effort than physical experimentation, they none the less are time consuming.
+
+\textcolor{Pink}{\textbf{The simulation methodology we used... (Souza to provide details of the simulation)}}
 
 Table~\ref{tab:OCSVM-result} represent a choice of the six highest scored MOFs from the CoRE MOFs database along with the three worst and two indeterminate MOFs, the six highest scored ones are predicted to be PFOA `Active', the three worst scored MOFs are predicted to be InActive while the borderline ones are assigned the `Indeterminate' label. The last column represents the results of carrying out simulations on these MOFs. As can be seen `Active' predictions were all incorrect, while the `Indeterminate' ones came back PFOA active. Therefore an improvement in the learned boundaries of the model was needed. However, there was still some value to be found in the the model as it was able to correctly predict the simulation outcome for the `InActive' MOFs.
 
@@ -504,10 +495,12 @@ The SVM was subsequently trained using the combined set of literature-derived an
 	\label{tab:SVM-result}
 \end{table*}
 
-As before, we must validate the SVM results in a further iteration of simulation. Table~\ref{tab:SVM-result} shows the $20$ MOFs we select for the next batch of simulations. We again choose a mix of 12 high scoring, 4 indeterminate and 4 low scoring MOFs, this time adding the CORE MOFs subsets ION and FSR in addition to the previous ASR subset. The simulation results are captured in the column `Normalised EnergyScore (NES)', \textcolor{Pink}{we find good the 12 MOFs scored highly by the SVM model to have high NES, while the 4 highly negative SVM scored MOFs do not return an energy measure from the simulation signifying their inability to adsorb PFAS. Off the 4 Indeterminate MOFs, 2 are as expected while the other 2 return outlier values of high energy scores. We use this information to further develop the ML model. }
+\textcolor{Pink}{\textbf{Souza to update/ restate paragraph AND/OR add details of the simulation if different:}}\\
+As before, we must validate the SVM results in a further iteration of simulation. Table~\ref{tab:SVM-result} shows the $20$ MOFs we select for the next batch of simulations. We again choose a mix of 12 high scoring, 4 indeterminate and 4 low scoring MOFs, this time adding the CORE MOFs subsets ION and FSR in addition to the previous ASR MOFs. The simulation results are captured in the column `Normalised EnergyScore (NES)', \textcolor{Pink}{we find the 12 MOFs scored highly by the SVM model to have high NES, while the 4 highly negative SVM scored MOFs do not return an energy measure from the simulation signifying their inability to adsorb PFAS. Off the 4 Indeterminate MOFs, 2 are as expected while the other 2 return outlier values of high energy scores. We use this information to further develop the ML model.}
+
+The simulation results, including the bond energies, obtained from these newly selected candidates were subsequently incorporated into the training dataset, providing additional labelled examples for refinement of the classification model and enabling progression to the next stage of the machine learning pipeline.
 
 \subsection{Support Vector Regression}
-The simulation results, including the bond energies, obtained from these newly selected candidates were subsequently incorporated into the training dataset, providing additional labelled examples for refinement of the classification model and enabling progression to the next stage of the machine learning pipeline.
 
 Introduce the model formulation..
 
